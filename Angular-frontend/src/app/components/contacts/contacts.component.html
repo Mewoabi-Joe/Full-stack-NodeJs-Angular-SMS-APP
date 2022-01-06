@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top">
+  <div class="container-fluid ">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav  d-flex justify-content-evenly mb-2 mb-lg-0" style="width: 100%">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLinkActive]="['active']"
+      
+          [routerLink]="['view_contacts']">View Contacts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']"
+      
+          [routerLink]="['add_contact']">Add Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

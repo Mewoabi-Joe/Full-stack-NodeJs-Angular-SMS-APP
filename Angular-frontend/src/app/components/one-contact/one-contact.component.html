@@ -1,0 +1,25 @@
+<div
+  class="
+    row
+    justify-content-center
+    align-items-center
+    mt-4
+    border
+    border-2
+    border-success
+    p-4
+    border-rounded-pill
+    mx-5
+    shadow
+  "
+  style="border-radius: 10px;"
+>
+  <div class="col ps-5  h4">{{ contact.name }}</div>
+  <div class="col ps-5 h5">{{ contact.number }}</div>
+  <div class="col h5">{{ contact.group }}</div>
+  <div class="col">
+    <button (click)="deleteContact(contact._id)" class="ms-2 btn btn-danger btn-sm">
+      Delete
+    </button>
+  </div>
+</div>

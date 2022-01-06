@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <div
+    *ngFor="let message of messages"
+    class="row justify-content-center align-items-center mt-3 border border-2 border-success p-3 border-rounded-pill mx-5 shadow"
+    style="border-radius: 10px; background-color: #ddd"
+  >
+    <H3>{{ message.receiver_number }}</H3>
+
+    <p>{{ message.content }}</p>
+  </div>
+</div>

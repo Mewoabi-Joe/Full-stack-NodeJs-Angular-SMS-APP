@@ -1,0 +1,36 @@
+<div class="container-lg">
+     
+  
+    <div class="row justify-content-center mt-5 ">
+      <form ngNativeValidate class="col-lg-6 border border-dark p-3 rounded" (submit)="onSubmit()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name:</label>
+          <input name="name" type="text"  class="form-control" id="name" [(ngModel)]="user.name" required/>
+          <div class="text-danger ">{{error.name?error.name:""}}</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="number" class="form-label">Phone number:</label>
+          <input name="number" type="number" [(ngModel)]="user.number" class="form-control" id="number" required/>
+          <div class="text-danger number">{{error.number?error.number:""}}</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="group" class="form-label">Group:</label>
+            <select name="group" [(ngModel)]="user.group" class="form-select" aria-label="Default select example">
+                <option value="uncategorised">uncategorised</option>
+                <option value="family">Family</option>
+                <option value="friend">Friend</option>
+              </select>
+            <div class="text-danger firstname">{{error.group?error.group:""}}</div>
+
+          </div>
+
+        
+        <div class="text-center ">
+          <button class="btn btn-success" style="width: 100%; border-radius: 10px;">Add Contact</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

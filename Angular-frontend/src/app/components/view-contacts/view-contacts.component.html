@@ -1,0 +1,98 @@
+<!-- <div class="row d-flex justify-content-center">
+  <div class="col">
+    <span
+      ><input
+        style="width: 240px; display: inline-block"
+        name="searchTerm"
+        type="text"
+        class="form-control"
+        id="searchTerm"
+        [(ngModel)]="searchTerm"
+      />
+      <button class="btn btn-outline-primary">Sign up</button>
+    </span>
+  </div>
+
+  <div class="col">
+    <span>
+      Filter by
+      <select
+        style="width: 240px; display:inline"
+        name="filter"
+        [(ngModel)]="filter"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        <option value="uncategorised">uncategorised</option>
+        <option value="family">Family</option>
+        <option value="friend">Friend</option>
+      </select>
+    </span>
+  </div>
+</div> -->
+<!-- <div class="table-responsive">
+  <table class="text-center table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Contact</th>
+        <th scope="col">Category</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let contact of contacts">
+      <tr>
+        <td>{{ contact.name }}</td>
+        <td>{{ contact.number }}</td>
+        <td>{{ contact.group ? contact.group : "uncategorised" }}</td>
+        <td>
+          <button class="btn btn-primary">Update</button
+          ><button
+            (click)="deleteContact(contact._id)"
+            class="ms-2 btn btn-danger"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+  <div class="container-fluid">
+    <div *ngFor="let contact of contacts"
+    class="
+      row
+      justify-content-center
+      align-items-center
+      mt-3
+      border
+      border-2
+      border-success
+      p-3
+      border-rounded-pill
+      mx-5
+      shadow
+    "
+    style="border-radius: 10px; background-color: #ddd;"
+  >
+    <div class="col ps-5  h4">{{ contact.name }}</div>
+    <div class="col ps-5 h5">{{ contact.number }}</div>
+    <div class="col h5">{{ contact.group }}</div>
+    <div class="col d-flex">
+      <button (click)="deleteContact(contact._id)" class="ms-2 btn btn-danger btn-sm d-inline">
+        Delete
+      </button>
+      <button (click)="sendMessage(contact._id, contact.number)" class="ms-2 btn btn-success btn-sm d-inline">
+        Send Message
+      </button>
+    </div>
+  </div>
+  
+    <!-- <app-one-contact *ngFor="let contact of contacts" [contact]="contact" [user_id]="user_id"></app-one-contact> -->
+  </div>
+  <nav  class=""aria-label="Page navigation example" style="position: fixed; bottom: 20px; right:500px">
+    <ul class="pagination">
+      <li *ngFor="let item of numberArray; let i= index" class="page-item" [attr.data-index]><a class="page-link"  (click)="getContactsHandle(i)">{{i+1}}</a></li>
+      
+    </ul>
+  </nav>
+<!-- </div> -->

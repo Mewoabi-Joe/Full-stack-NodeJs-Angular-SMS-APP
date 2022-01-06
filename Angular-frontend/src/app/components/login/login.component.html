@@ -1,0 +1,29 @@
+<div class="container-lg">
+    <h6 class="text-end mt-2">
+        Are you new? <span><a routerLink="/signup" routerLinkActive="router-link-active"  class="btn btn-success">SignUp</a></span> 
+    </h6>
+    <h3 class="text-center ">
+        SMS APP LOGIN
+    </h3>
+    
+    <div class="row justify-content-center my-5 ">
+        <form ngNativeValidate class="col-lg-6 border border-dark p-5 rounded" (submit)="onSubmit()">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address:</label>
+                <input name="email" type="email" [(ngModel)]="user.email" class="form-control" id="email"  placeholder="name@example.com" required/>
+                <div class="text-danger firstname">{{error.email?error.email:""}}</div>
+              </div>
+              <div class="mb-5">
+                <label for="password" class="form-label">Password:</label>
+                <input name="password" type="password" [(ngModel)]="user.password" class="form-control" id="password" required/>
+                <div class="text-danger password">{{error.password?error.password:""}}</div>
+              </div>
+              <div class="mb-3">
+                <a  routerLink="/verify_email">forgotten password?</a>
+              </div>
+              <div class="text-center">
+                  <button class="btn btn-success" style="width: 100%; border-radius: 10px;">Login</button>
+              </div>
+        </form>
+    </div>
+</div>

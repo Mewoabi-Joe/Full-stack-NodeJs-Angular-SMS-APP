@@ -1,0 +1,56 @@
+<div class="container-lg">
+  <h6 class="text-end mt-1">
+    Already have an account?
+    <span
+      ><a
+        routerLink="/"
+        routerLinkActive="router-link-active"
+        class="btn btn-success"
+        >LogIn</a
+      ></span
+    >
+  </h6>
+  <h3 class="text-center">SMS APP SIGNUP</h3>
+
+  <div class="row justify-content-center my-1 ">
+    <form ngNativeValidate class="col-lg-6 border border-dark p-3 rounded" (submit)="onSubmit()">
+      <div class="mb-1">
+        <label for="first_name" class="form-label">First name:</label>
+        <input name="first_name" type="text"  class="form-control" id="first_name" [(ngModel)]="user.first_name" required/>
+        <div class="text-danger firstname">{{error.first_name?error.first_name:""}}</div>
+      </div>
+      <div class="mb-1">
+        <label for="last_name" class="form-label">Last name:</label>
+        <input name="last_name" [(ngModel)]="user.last_name" type="text" class="form-control" id="last_name" />
+        <div class="text-danger last_name">{{error.last_name?error.last_name:""}}</div>
+      </div>
+      <div class="mb-1">
+        <label for="email" class="form-label">Email address:</label>
+        <input name="email" [(ngModel)]="user.email" type="email" class="form-control" id="email" required/>
+        <div class="text-danger email">{{error.email?error.email:""}}</div>
+      </div>
+      <div class="mb-1">
+        <label for="number" class="form-label">Phone number:</label>
+        <input name="number" type="number" [(ngModel)]="user.number" class="form-control" id="number" required/>
+        <div class="text-danger number">{{error.number?error.number:""}}</div>
+      </div>
+      <div class="mb-1">
+        <label for="password" class="form-label">Password:</label>
+        <input name="password" [(ngModel)]="user.password" type="password" class="form-control" id="password" required/>
+        <div class="text-danger password">{{error.password?error.password:""}}</div>
+      </div>
+      <div class="mb-1">
+        <label for="vPassword" class="form-label">Enter password again:</label>
+        <input name="vPassword" [(ngModel)]="vPassword" type="password" class="form-control" id="vPassword" required/>
+        <div class="text-danger vPassword">{{error.vPassword?error.vPassword:""}}</div>
+      </div>
+      <div class="mb-1">
+        <input name="radio" type="radio" name="" id="">
+        remember me
+      </div>
+      <div class="text-center">
+        <button class="btn btn-success" style="width: 100%; border-radius: 10px;">Sign up</button>
+      </div>
+    </form>
+  </div>
+</div>

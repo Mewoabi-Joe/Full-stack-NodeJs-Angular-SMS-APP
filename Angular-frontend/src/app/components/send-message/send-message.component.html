@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div
+    class="
+      row
+      justify-content-center
+      align-items-center
+      mt-3
+      border
+      border-2
+      border-success
+      p-3
+      border-rounded-pill
+      mx-5
+      shadow
+    "
+    style="border-radius: 10px; background-color: #ddd;"
+  >
+  <form ngNativeValidate class="col-lg-6 border border-dark p-5 rounded" (submit)="onSendSubmit()">
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">EnterMessage</label>
+        <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="message.content"></textarea>
+      </div>
+      <div class="text-center">
+          <button class="btn btn-success" style="width: 100%; border-radius: 10px;">Send Message</button>
+      </div>
+</form>
+   
+  </div>

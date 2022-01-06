@@ -1,0 +1,20 @@
+<div class="container-lg">
+    
+    <h3 class="text-center " >
+       Enter Your Email
+    </h3>
+    
+    <div class="row justify-content-center my-5 ">
+        <form ngNativeValidate class="col-lg-6 border border-dark p-5 rounded" (submit)="onSubmit()">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address:</label>
+                <input name="email" type="email" [(ngModel)]="user.email" class="form-control" id="email"  placeholder="name@example.com" required/>
+                <div class="text-danger firstname">{{error.email?error.email:""}}</div>
+              </div>
+              
+              <div class="text-center">
+                  <button class="btn btn-success" style="width: 100%; border-radius: 10px;">Verify Email</button>
+              </div>
+        </form>
+    </div>
+</div>
