@@ -45,4 +45,3 @@ const requireAuth = (req, res, next) => {
 // , checkUser
 
 module.exports = { requireAuth };
-2
