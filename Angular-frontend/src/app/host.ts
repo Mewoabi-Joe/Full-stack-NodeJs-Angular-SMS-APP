@@ -1,2 +1,2 @@
-const HOST = 'http://localhost:4000';
+const HOST = 'http://localhost:8080';
 export default  HOST; 

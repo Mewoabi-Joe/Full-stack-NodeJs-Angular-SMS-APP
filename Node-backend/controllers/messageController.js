@@ -40,30 +40,25 @@ module.exports.messages_put = async (req, res) => {
 		console.log(user_id);
 
 		const message = req.body;
-        
+
 		const { receiver_number, content } = req.body;
 
 		let error;
 
 		if (receiver_number < 600000000 || receiver_number > 700000000)
-			res
-				.status(400)
-				.json({ error: { number: "number is not of valid format" } });
+			res.status(400).json({ error: { number: "number is not of valid format" } });
 
-		const updatedUser = await User.updateOne(
-			{ _id: user_id },
-			{ $push: { messages: message } }
-		);
+		const updatedUser = await User.updateOne({ _id: user_id }, { $push: { messages: message } });
 		// const res = axios.post('http://proxysms.mufoca.com//api/v0/shortMessages',info, {
 		//     headers: {
 		//         'Content-Type': 'application/json',
 		//         'Authorization': this.token
 		//     }
 		//   })
-		res.status(201).json({ success: "Added new message" });
+		return res.status(201).json({ success: "Added new message" });
 	} catch (err) {
 		const errors = handleErrors(err);
-		res.status(400).json({ errors });
+		return res.status(400).json({ errors });
 	}
 };
 
@@ -72,21 +67,16 @@ module.exports.messages_send = async (req, res) => {
 		const info = req.body;
 		console.log("info", info);
 
-		const resp = axios.post(
-			"http://proxysms.mufoca.com//api/v0/shortMessages",
-			info,
-			{
-				headers: {
-					"Content-Type": "application/json",
-					Authorization:
-						"Basic ZjE2MTg3ZGE3MGI2OmI2OTAxZDQwLWYyMTEtOTMwYS04ZTBjLTFjZGFkN2E2NGY5OQ==",
-				},
-			}
-		);
-		res.status(201).json({ success: resp });
+		const resp = axios.post("http://proxysms.mufoca.com//api/v0/shortMessages", info, {
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: "Basic ZjE2MTg3ZGE3MGI2OmI2OTAxZDQwLWYyMTEtOTMwYS04ZTBjLTFjZGFkN2E2NGY5OQ==",
+			},
+		});
+		return res.status(201).json({ success: resp });
 	} catch (err) {
 		const errors = handleErrors(err);
-		res.status(400).json({ errors });
+		return res.status(400).json({ errors });
 	}
 };
 
@@ -97,9 +87,7 @@ module.exports.messages_get = async (req, res) => {
 		return function (page) {
 			const basePage = page * perPage;
 
-			return page < 0 || basePage >= arr.length
-				? []
-				: arr.slice(basePage, basePage + perPage);
+			return page < 0 || basePage >= arr.length ? [] : arr.slice(basePage, basePage + perPage);
 		};
 	}
 
@@ -122,7 +110,7 @@ module.exports.messages_get = async (req, res) => {
 		// Is it a filter
 		if (queryString.page) {
 			messages = paginate(queryString.page);
-			res.status(201).json({ messages, number });
+			return res.status(201).json({ messages, number });
 		}
 		// if (queryString.filter) {
 		// 	messages.sort((a, b) => {
@@ -130,7 +118,7 @@ module.exports.messages_get = async (req, res) => {
 		// 		if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
 		// 		return 0;
 		// 	});
-		// 	res.status(201).json({ messages });
+		// 	return res.status(201).json({ messages });
 		// }
 		// //Is it a search
 		// if (queryString.name) {
@@ -141,9 +129,9 @@ module.exports.messages_get = async (req, res) => {
 		// 	const searchNumber = queryString.number;
 		// }
 
-		res.status(201).json({ messages });
+		return res.status(201).json({ messages });
 	} catch (err) {
 		const errors = handleErrors(err);
-		res.status(400).json({ errors });
+		return res.status(400).json({ errors });
 	}
 };

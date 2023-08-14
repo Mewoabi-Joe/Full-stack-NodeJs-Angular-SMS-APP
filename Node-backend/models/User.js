@@ -21,15 +21,14 @@ const contactSchema = new Schema({
 		unique: true,
 		sparse: true,
 	},
-	// email: {
-	// 	type: String,
-	// 	unique: true,
-	// 	lowercase: true,
-	// 	validate: [isEmail, "Please enter a valid email"],
-	// 	trim:true,
-	// 	sparse:true
-
-	// },
+	email: {
+		type: String,
+		unique: true,
+		lowercase: true,
+		validate: [isEmail, "Please enter a valid email"],
+		trim: true,
+		sparse: true,
+	},
 	group: String,
 });
 

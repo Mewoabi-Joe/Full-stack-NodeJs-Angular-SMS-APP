@@ -53,12 +53,11 @@ module.exports.signup_post = async (req, res) => {
 		const user = await User.create(req.body);
 		const token = createToken(user._id);
 		// res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-		res
-			.status(201)
-			.json({ user: { id: user._id, first_name: user.first_name }, token });
+		return res.status(201).json({ user: { id: user._id, first_name: user.first_name }, token });
 	} catch (err) {
+		console.log("err", err);
 		const errors = handleErrors(err);
-		res.status(400).json({ errors });
+		return res.status(400).json({ errors });
 	}
 };
 
@@ -69,18 +68,16 @@ module.exports.login_post = async (req, res) => {
 		const user = await User.login(email, password);
 		const token = createToken(user._id);
 		// res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-		res
-			.status(200)
-			.json({ user: { id: user._id, first_name: user.first_name }, token });
+		return res.status(200).json({ user: { id: user._id, first_name: user.first_name }, token });
 	} catch (err) {
 		const errors = handleErrors(err);
-		res.status(400).json({ errors });
+		return res.status(400).json({ errors });
 	}
 };
 
 // module.exports.logout_get = (req, res) => {
 // 	res.cookie("jwt", "", { maxAge: 1 });
-// 	res.status(200).json({ message: "logout successful" });
+// 	return res.status(200).json({ message: "logout successful" });
 // };
 // module.exports.sendEmailToResetPassword = async (req, res) => {
 // 	try {
@@ -112,7 +109,7 @@ module.exports.login_post = async (req, res) => {
 // 		console.log(info);
 // 	} catch (err) {
 // 		const errors = handleErrors(err);
-// 		res.status(400).json({ errors });
+// 		return res.status(400).json({ errors });
 // 	}
 // };
 

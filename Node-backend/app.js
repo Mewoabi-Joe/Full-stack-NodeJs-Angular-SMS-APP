@@ -7,8 +7,8 @@ const path = require("path");
 const config = require("./config/database");
 const cors = require("cors");
 // const cookieParser = require("cookie-parser");
-// , checkUser 
-const {requireAuth} = require("./middleware/authMiddleware");
+// , checkUser
+const { requireAuth } = require("./middleware/authMiddleware");
 
 // var TeleSignSDK = require('telesignsdk');
 
@@ -41,7 +41,6 @@ const {requireAuth} = require("./middleware/authMiddleware");
 // }
 // client.sms.message(messageCallback, phoneNumber, message, messageType);
 
-
 const app = express();
 
 // middleware
@@ -57,21 +56,21 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // database connection
 mongoose
-	.connect(config.database, {
+	.connect("mongodb+srv://leontiusmewoabi:6RV4ZXEnfeYwY9fJ@cluster0.m8bujxr.mongodb.net/?retryWrites=true&w=majority", {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
 	.then((result) => {
 		console.log("connection made to mogodb");
-		app.listen(4000);
+		app.listen(8080);
 	})
 	.catch((err) => console.log(err));
 
 // // routes
 // app.get('*', checkUser);
 // app.get("/", (req, res) => res.send("Invalid endpoint"));
-//  
-app.get('/main',requireAuth,(req, res) => res.json({message:'success'}));
-app.use("/auth",authRoutes);
-app.use("/contacts",contactRoutes);
-app.use("/messages",messageRoutes);
+//
+app.get("/main", requireAuth, (req, res) => res.json({ message: "success" }));
+app.use("/auth", authRoutes);
+app.use("/contacts", contactRoutes);
+app.use("/messages", messageRoutes);
